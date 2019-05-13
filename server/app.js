@@ -8,14 +8,6 @@ const bcrypt = require('bcrypt')
 const saltRounds = 10
 const PORT = 8080
 
-
-
-
-// const users = [
-//   {username: 'johndoe', password: 'password'},
-//   {username: 'marydoe', password: 'password'}
-// ]
-
 app.use(cors())
 app.use(bodyParser.json())
 
@@ -86,6 +78,47 @@ app.post('/login', (req, res) => {
             })
         }
     })
+})
+
+app.post('/api/cheeselist',(req,res) => {
+
+  let photo = req.body.photo
+  let name = req.body.name
+  let type = req.body.type
+  let milk = req.body.milk
+  let origin = req.body.origin
+  let texture = req.body.texture
+  let notes = req.body.notes
+  let rating = req.body.rating
+  let user = req.body.user
+
+  let Entry = models.Journal.build({
+    photo: photo,
+    name: name,
+    type: type,
+    milk: milk,
+    origin: origin,
+    texture: texture,
+    notes: notes,
+    rating: rating,
+    user: user
+  })
+
+  Entry.save().then((savedEntry) => {
+    if(savedEntry) {
+      res.json({success: true})
+    } else {
+      res.json({success: false, message: 'Error saving entry'})
+    }
+  })
+
+})
+
+app.get('/api/books', async (req,res) => {
+
+  models.Journal.findAll()
+  .then((entries) => res.json(entries))
+
 })
 
 app.listen(PORT,() => {
