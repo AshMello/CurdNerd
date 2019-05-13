@@ -60,18 +60,17 @@ app.post('/login', (req, res) => {
     let username = req.body.username
     let password = req.body.password
 
-    models.User.findAll({
+    models.User.findOne({
         where: {
-            username: username,
-            password: password
+            username: username
+            // password: password
         }
     })
     .then((user) => {
         if(user) {
-
             jwt.sign({ username: username}, 'secret', function(err, token) {
                 if (token) {
-                    res.json({token: token})
+                    res.json({token: token, id: user.dataValues.id})
                 } else {
                     res.status(500).json({message: 'unable to generate token'})
                 }

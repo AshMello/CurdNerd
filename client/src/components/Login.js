@@ -21,9 +21,10 @@ class Login extends Component {
             password: this.state.password
         }).then(response => {
             let token = response.data.token
-            console.log(token)
+            let userId = response.data.id
+            console.log(token, userId)
             localStorage.setItem('jsonwebtoken', token)
-            this.props.onAuthenticated(token)
+            this.props.onAuthenticated(token,userId)
             setAuthenticationHeader(token)
         }).catch(error => console.log(error))
     }
@@ -47,7 +48,7 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAuthenticated: (token) => dispatch({type: 'ON_AUTHENTICATED', token: token})
+        onAuthenticated: (token,userId) => dispatch({type: 'ON_AUTHENTICATED', token: token, id:userId})
     }
 }
 

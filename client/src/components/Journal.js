@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class Journal extends Component {
 
@@ -13,8 +14,7 @@ class Journal extends Component {
       origin:'',
       texture:'',
       notes:'',
-      rating:'',
-      user:'5'
+      rating:''
     }
   }
   handleTextChange = (e) => {
@@ -24,7 +24,7 @@ class Journal extends Component {
   }
 
   handleSaveClick = () => {
-
+    console.log(this.props)
     fetch('http://localhost:8080/api/cheeselist', {
       method: 'POST',
       headers: {
@@ -39,7 +39,7 @@ class Journal extends Component {
     texture: this.state.texture,
     notes: this.state.notes,
     rating: this.state.rating,
-    user: this.state.user
+    user: this.props.user
     })
 }).then(response => response.json())
 .then(result => {
@@ -67,5 +67,11 @@ class Journal extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.uid
+  }
+}
   
-  export default Journal
+  export default connect(mapStateToProps)(Journal)
