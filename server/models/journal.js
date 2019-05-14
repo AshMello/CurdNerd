@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Journal.associate = function(models) {
     // associations can be defined here
+    Journal.belongsTo(models.User, { foreignKey: "user" });
   };
   return Journal;
 };

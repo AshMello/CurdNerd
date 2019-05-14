@@ -113,11 +113,18 @@ app.post('/api/cheeselist',(req,res) => {
 
 })
 
-app.get('/api/books', async (req,res) => {
+app.get('/api/cheeselist', async (req,res) => {
 
-  models.Journal.findAll()
-  .then((entries) => res.json(entries))
+  let list = await models.Journal.findAll()
+  res.json(list)
+})
 
+app.post('/delete', (req, res) => {
+  models.Journal.destroy({
+      where: {
+          id: req.body.entryKey
+      }
+  })
 })
 
 app.listen(PORT,() => {

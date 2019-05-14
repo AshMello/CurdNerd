@@ -11,6 +11,7 @@ import BaseLayout from './components/BaseLayout';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import requireAuth from './components/requireAuth';
 import Journal from './components/Journal';
+import ViewAll from './components/ViewAll';
 const store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 setAuthenticationHeader(localStorage.getItem('jsonwebtoken'))
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Switch>
             <Route path = "/" exact component = {App} /> 
             <Route path = "/journal" exact component = {requireAuth(Journal)} /> 
+            <Route path = "/viewall" exact component = {requireAuth(ViewAll)} /> 
         </Switch>
         </BaseLayout>
     </BrowserRouter>

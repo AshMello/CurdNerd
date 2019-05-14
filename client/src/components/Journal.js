@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+// import {ViewAll} from './components/ViewAll';// 
 
 class Journal extends Component {
 
@@ -63,7 +64,10 @@ class Journal extends Component {
         <input onChange={this.handleTextChange} type="textbox" name="notes" placeholder="notes"/>
         <input onChange={this.handleTextChange} name="rating" placeholder="rating"/>
         <button onClick={this.handleSaveClick}>Save</button>
+
+        {/* {ViewAll} */}
       </div>
+
     )
   }
 }
