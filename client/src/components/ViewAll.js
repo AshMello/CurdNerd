@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import StarRatingComponent from 'react-star-rating-component';
 
 class ViewAll extends Component {
     constructor() {
@@ -30,7 +31,11 @@ class ViewAll extends Component {
                   <br></br>
                   <li>Notes:{cheese.notes}</li>
                   <br></br>
-                  <li>Stars:{cheese.rating}</li>
+                  <StarRatingComponent 
+                      name="rate1" 
+                      starCount={5}
+                      value={cheese.rating}
+                    />
                   <button onClick={() => this.deleteCheese(cheese)}>Delete</button>
                   <button>Update</button>
                 </ul>
@@ -51,7 +56,6 @@ class ViewAll extends Component {
       }
 
       deleteCheese(cheese) {
-
         let delId = {
             entryKey: cheese.id
         }

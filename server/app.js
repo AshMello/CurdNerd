@@ -5,6 +5,8 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const models = require('./models')
 const bcrypt = require('bcrypt')
+
+
 const saltRounds = 10
 const PORT = 8080
 
@@ -81,7 +83,7 @@ app.post('/login', (req, res) => {
 
 app.post('/api/cheeselist',(req,res) => {
 
-  let photo = req.body.photo
+  let photo = req.body.photoUrl
   let name = req.body.name
   let type = req.body.type
   let milk = req.body.milk
