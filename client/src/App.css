@@ -31,3 +31,30 @@
     transform: rotate(360deg);
   }
 }
+
+.jumbo {
+  padding-top: 50px;
+  background-image: url('components/bread-cheese-close-up-821365.jpg');
+  background-color: #ffa45c;
+  color: white;
+  background-size: cover;
+  height: 400px;
+  
+}
+
+.NavBg {
+  background-color: black;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+/* .allThings {
+  background-color: black;
+} */
+
+.head {
+  text-align: center;
+}

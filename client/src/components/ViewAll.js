@@ -5,10 +5,9 @@ import StarRatingComponent from 'react-star-rating-component';
 class ViewAll extends Component {
     constructor() {
     super()
-
-    this.state = {
-        cheeseList: []
-    }
+      this.state = {
+          cheeseList: []
+      }
     }
 
     componentDidMount() {

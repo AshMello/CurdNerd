@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {setAuthenticationHeader} from '../utils/authenticate';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import { Button, Form } from 'react-bootstrap';
+import './Login.css';
 
 class Login extends Component {
 
@@ -37,11 +39,27 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <input name="username" onChange={this.handleTextBoxChange} placeholder='username'></input>
-                <input name="password" onChange={this.handleTextBoxChange} placeholder='password'></input>
-                <button onClick={this.handleLoginClick}>Login</button>
+            <div className="container">
+            <Form className="fullForm">
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control name="username" onChange={this.handleTextBoxChange} />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label >Password</Form.Label>
+                    <Form.Control name="password" onChange={this.handleTextBoxChange} />
+                </Form.Group>
+                <Button className="button" onClick={this.handleLoginClick}>
+                    Login
+                </Button>
+            </Form>
             </div>
+        
+        //     <div>
+        //         <input name="username" onChange={this.handleTextBoxChange} placeholder='username'></input>
+        //         <input name="password" onChange={this.handleTextBoxChange} placeholder='password'></input>
+        //         <Button variant="secondary" onClick={this.handleLoginClick}>Login</Button>
+        //     </div>
         )
     }
 }

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import StarRatingComponent from 'react-star-rating-component';
-import Axios from 'axios';
+import {Form, Col, Button} from 'react-bootstrap';
 
-import Dropzone from 'react-dropzone'
-import request from 'superagent'
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
+import './Journal.css';
 const CLOUDINARY_UPLOAD_PRESET = 'vigb9ffx'
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/curdnerd/image/upload'
 
@@ -90,7 +91,7 @@ class Journal extends Component {
     const { rating } = this.state;
 
     return (
-      <div>
+      <div className="container">
           <div>
             <Dropzone
               onDrop={this.onImageDrop.bind(this)}
@@ -110,21 +111,62 @@ class Journal extends Component {
                 }}
             </Dropzone>
           </div>
-        <input onChange={this.handleTextChange} name="name" placeholder="name"/>
+
+
+
+
+        <Form>
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label>Cheese Name</Form.Label>
+              <Form.Control onChange={this.handleTextChange} name="name" placeholder="name" />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label>Cheese Type</Form.Label>
+              <Form.Control onChange={this.handleTextChange} name="type" placeholder="type (brie, gouda, etc)" />
+            </Form.Group>
+          </Form.Row>
+
+          <Form.Row>
+          <Form.Group as={Col} controlId="formGridAddress1">
+            <Form.Label>Milk Type</Form.Label>
+            <Form.Control onChange={this.handleTextChange} name="milk" placeholder="milk type" />
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridAddress2">
+            <Form.Label>Origin</Form.Label>
+            <Form.Control onChange={this.handleTextChange} name="origin" placeholder="origin" />
+          </Form.Group>
+
+          
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Texture</Form.Label>
+              <Form.Control onChange={this.handleTextChange} name="texture" placeholder="texture"/>
+            </Form.Group>
+            </Form.Row>
+
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Description</Form.Label>
+              <Form.Control as="textarea" rows="3" onChange={this.handleTextChange} name="notes" placeholder="notes"/>
+            </Form.Group>
+        </Form>
+        {/* <input onChange={this.handleTextChange} name="name" placeholder="name"/>
         <input onChange={this.handleTextChange} name="type" placeholder="type (brie, gouda, etc)"/>
         <input onChange={this.handleTextChange} name="milk" placeholder="milk type"/>
         <input onChange={this.handleTextChange} name="origin" placeholder="origin"/>
         <input onChange={this.handleTextChange} name="texture" placeholder="texture"/>
-        <input onChange={this.handleTextChange} type="textbox" name="notes" placeholder="notes"/>
+        <input onChange={this.handleTextChange} type="textbox" name="notes" placeholder="notes"/> */}
         <StarRatingComponent 
           name="rating" 
           starCount={5}
           value={rating}
           starColor="orange"
           emptyStarColor="grey"
-          onStarClick={this.onStarClick.bind(this)}
-        />
-        <button onClick={this.handleSaveClick}>Save</button>
+          onStarClick={this.onStarClick.bind(this)}/>
+          <br></br>
+          <Button variant="primary" onClick={this.handleSaveClick}>Save </Button>
+        {/* <button onClick={this.handleSaveClick}>Save</button> */}
 
         {/* {ViewAll} */}
       </div>

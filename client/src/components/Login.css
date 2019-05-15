@@ -1,0 +1,10 @@
+.container {
+    width:50%;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.button, .button:hover, .button:active {
+    background-color: black;
+    outline-color: black;
+}

@@ -1,0 +1,27 @@
+#div1, #div2, #div3{
+    width: 250px;
+    height: 250px;
+    margin: 75px;
+    padding: 75px;
+    border: 1px solid gray;
+    margin-top: 170px;
+}
+
+.img {
+    width: 50px;
+    height: 50px;
+}
+
+#cheeseDrag {
+    background-image: url('./chopping.jpg');
+    background-size: cover;
+    display: flex;
+    height: 600px;
+    justify-content: center;
+}
+
+#itemDisplay {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

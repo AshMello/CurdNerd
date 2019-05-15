@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import reducer from './store/reducer';
 import { setAuthenticationHeader } from './utils/authenticate';
 import BaseLayout from './components/BaseLayout';
+import CheeseBoard from './components/CheeseBoard';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import requireAuth from './components/requireAuth';
 import Journal from './components/Journal';
@@ -24,6 +25,7 @@ ReactDOM.render(
             <Route path = "/" exact component = {App} /> 
             <Route path = "/journal" exact component = {requireAuth(Journal)} /> 
             <Route path = "/viewall" exact component = {requireAuth(ViewAll)} /> 
+            <Route path = "/cheeseboard" exact component = {requireAuth(CheeseBoard)} /> 
         </Switch>
         </BaseLayout>
     </BrowserRouter>
